@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Widget Pane Widget Test</title>
+
+		<!-- for tests -->
+		<style type="text/css">
+			@import "../../../dojo-svn/dojo/resources/dojo.css";
+		</style>
+		
+		<!-- required: a default dijit theme: -->
+		<link id="themeStyles" rel="stylesheet" href="../../../dojo-svn/dijit/themes/nihilo/nihilo.css">
+		<link id="themeStyles" rel="stylesheet" href="../../../dojo-svn/dijit/themes/soria/soria.css">
+		<link id="themeStyles" rel="stylesheet" href="../../../dojo-svn/dijit/themes/tundra/tundra.css">
+		<link id="themeStyles" rel="stylesheet" href="../../src/themes/wDojo.css">
+		
+		<!-- required: dojo.js -->
+		<script type="text/javascript" src="../../../dojo-svn/dojo/dojo.js"
+            djConfig="parseOnLoad: true, isDebug: true"></script>
+
+		<script type="text/javascript" src="../../src/wDojo.js" djConfig="locale: 'fr'"></script>
+
+		<script type="text/javascript">
+			dojo.require("dijit.layout.ContentPane");
+			dojo.require("wDojo.dijit.WidgetPane");
+			
+  				dojo.require("dojo.parser"); // scan page for widgets
+
+            dojo.requireLocalization("wDojo", "global");
+		</script>
+	</head>
+	<body >
+		
+		<h1 class="testTitle">WidgetPane Test</h1>
+
+        <div class="nihilo" style="float: left;  padding: 10px">
+            <div id="CalendarPane" dojoType="wDojo.dijit.WidgetPane" title="Widget Pane" doLayout="false">
+                <div dojoType="dijit.layout.ContentPane" label="Content Pane" class="widgetMainPane" id="mainPane1" doLayout="false">
+					Main pane 1
+				</div>
+				<div dojoType="dijit.layout.ContentPane" label="Content Pane" class="widgetMainPane" id="mainPane2" doLayout="false">
+					Main pane 2
+				</div>
+				<div dojoType="dijit.layout.ContentPane" label="Content Pane" class="widgetSettingsPane">
+					Settings 1
+				</div>
+				<div dojoType="dijit.layout.ContentPane" label="Content Pane" class="widgetSettingsPane">
+					Settings 2
+				</div>
+            </div>
+        </div>
+
+
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<div class="${baseClass}">
+    <div dojoAttachEvent="onkeypress: _onTitleKey,onfocus:_handleFocus,onblur:_handleFocus" tabindex="0"
+            waiRole="button" class="dijitTitlePaneTitle" dojoAttachPoint="titleBarNode,focusNode">
+        <img dojoAttachEvent="onclick:toggle" src="${_blankGif}" alt="" dojoAttachPoint="arrowNode" class="dijitArrowNode" waiRole="presentation"
+        ><span dojoAttachPoint="arrowNodeInner" class="dijitArrowNodeInner" dojoAttachEvent="onclick:toggle"></span
+        ><span dojoAttachPoint="titleNode" class="dijitTitlePaneTextNode"></span>
+        <span class='dijitBarText' dojoAttachPoint="extraTitleNode"></span>
+        <img dojoAttachPoint="closeNode" src="${_blankGif}" alt="" dojoAttachEvent="onclick: close" class="dojoxFloatingCloseIcon">
+        
+        <img dojoAttachEvent="onclick:toggleEdit" src="${_blankGif}" alt="" dojoAttachPoint="configNode" class="configOff" waiRole="presentation">
+    </div>
+    <div class="widgetTitlePaneContentOuter" dojoAttachPoint="hideNode">
+        <div class="dijitReset" dojoAttachPoint="wipeNode">
+
+            <div class="WidgetPaneContentInner">
+            
+            <div dojoAttachPoint="containerNode" waiRole="region" tabindex="-1">
+                <!-- nested divs because wipeIn()/wipeOut() doesn't work right on node w/padding etc.  Put padding on inner div. -->
+            </div>
+            <div class="widgetPaneFooter" dojoAttachPoint="footerNode">
+                <img dojoAttachPoint="previous" src="${_blankGif}" alt="" dojoAttachEvent="onclick: previousPane" class="previousIcon" /><span dojoAttachPoint="previousNodeInner" dojoAttachEvent="onclick:previousPane"></span>
+                <img dojoAttachPoint="next" src="${_blankGif}" alt="" dojoAttachEvent="onclick: nextPane" class="nextIcon" /><span dojoAttachPoint="nextNodeInner" dojoAttachEvent="onclick:nextPane"></span>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
