@@ -13,7 +13,7 @@ define([
 	"dijit/_CssStateMixin",
 	"dijit/_TemplatedMixin"
 ], function(template, array, declare, lang, connect, dom, domClass, domStyle, fxUtils, manager, StackContainer, _TemplatedMixin, _CssStateMixin){
-  return declare("wDojo.dijit.WidgetPane", [StackContainer, _TemplatedMixin, _CssStateMixin],
+  return declare("dojoinc.layout.WidgetPane", [StackContainer, _TemplatedMixin, _CssStateMixin],
 	{
         // title: String
         //      Title of the pane
@@ -122,6 +122,7 @@ define([
 
         close: function(){
             // summary: Close and destroy this widget
+            console.log("WidgetPane::close");
             if(!this.closable){ return; }
             connect.unsubscribe(this._listener);
             this.hide(lang.hitch(this, function(){
@@ -155,12 +156,12 @@ define([
                     dojo.fadeOut({
                         node:oldWidget.domNode,
                         duration:this.duration,
-                        onEnd: dojo.hitch(this, "_hideChild", oldWidget)
+                        onEnd: lang.hitch(this, "_hideChild", oldWidget)
                     }),
                     dojo.fadeIn({
                         node: newWidget.domNode,
                         duration:this.duration,
-                        onBegin: dojo.hitch(this, "_showChild", newWidget),
+                        onBegin: lang.hitch(this, "_showChild", newWidget),
                         onPlay: this._onTransition
 //                        onEnd: this._onTransition
                     })
@@ -184,6 +185,8 @@ define([
 
         _showChild: function(page){
             // summary: show the specified child widget
+            console.log("WidgetPane::shoChild", page);
+            
             this.inherited(arguments);
             if(this.pageable){
                 if(this._adjacentOfSameKind(true, page)){ this.footerNode.style.display = ""; }
@@ -227,6 +230,8 @@ define([
         toggleEdit: function(){
             // summary:
             //      Switches between opened and closed state
+            console.log("WidgetPane::toogleEdit");
+            
             this._stopWip();
             var classToSearch = this.isConfigMode() ? "widgetMainPane" : "widgetSettingsPane";
             var arr = this.getChildren();
@@ -302,32 +307,15 @@ define([
             }
         },
 
-        _onTitleEnter: function(){
-            // summary:
-            //      Handler for when someone hovers over my title
-            // tags:
-            //      private
-            domClass.add(this.focusNode, "dijitTitlePaneTitle-hover");
-        },
-
-        _onTitleLeave: function(){
-            // summary:
-            //      Handler when someone stops hovering over my title
-            // tags:
-            //      private
-            domClass.remove(this.focusNode, "dijitTitlePaneTitle-hover");
-        },
-
-        _handleFocus: function(/*Event*/ e){
-            // summary:
-            //      Handle blur and focus for this widget
-            // tags:
-            //      private
-
-            // add/removeClass is safe to call without hasClass in this case
-            dojo[(e.type == "focus" ? "addClass" : "removeClass")](this.focusNode, this.baseClass + "Focused");
-        },
-
+       _onTitleClick: function(){
+			// summary:
+			//		Handler when user clicks the title bar
+			// tags:
+			//		private
+			console.log("WidgetPane::titleClick", this.toggleable);
+			this.toggle();
+		},
+	
         refreshDisplay: function(){
             // summary:
             //      Check if the selected child Widget has DataGrid to update display.

@@ -1,26 +1,24 @@
 <div class="${baseClass}">
-    <div dojoAttachEvent="onkeypress: _onTitleKey,onfocus:_handleFocus,onblur:_handleFocus" tabindex="0"
-            waiRole="button" class="dijitTitlePaneTitle" dojoAttachPoint="titleBarNode,focusNode">
-        <img dojoAttachEvent="onclick:toggle" src="${_blankGif}" alt="" dojoAttachPoint="arrowNode" class="dijitArrowNode" waiRole="presentation"
-        ><span dojoAttachPoint="arrowNodeInner" class="dijitArrowNodeInner" dojoAttachEvent="onclick:toggle"></span
-        ><span dojoAttachPoint="titleNode" class="dijitTitlePaneTextNode"></span>
-        <span class='dijitBarText' dojoAttachPoint="extraTitleNode"></span>
-        <img dojoAttachPoint="closeNode" src="${_blankGif}" alt="" dojoAttachEvent="onclick: close" class="dojoxFloatingCloseIcon">
-        
-        <img dojoAttachEvent="onclick:toggleEdit" src="${_blankGif}" alt="" dojoAttachPoint="configNode" class="configOff" waiRole="presentation">
-    </div>
-    <div class="widgetTitlePaneContentOuter" dojoAttachPoint="hideNode">
-        <div class="dijitReset" dojoAttachPoint="wipeNode">
-
+    <div data-dojo-attach-event="onkeypress:_onTitleKey"
+			class="dijitTitlePaneTitle" data-dojo-attach-point="titleBarNode">
+		<span data-dojo-attach-event="onclick:_onTitleClick" class="dijitTitlePaneTitleFocus" data-dojo-attach-point="focusNode">
+			<img src="${_blankGif}" alt="" data-dojo-attach-point="arrowNode" class="dijitArrowNode" role="presentation"
+			/><span data-dojo-attach-point="arrowNodeInner" class="dijitArrowNodeInner"></span
+			><span data-dojo-attach-point="titleNode" class="dijitTitlePaneTextNode"></span>
+		</span>
+		<span data-dojo-attach-event="onclick:toggleEdit" data-dojo-attach-point="configNode" class="configOff" waiRole="presentation"><span data-dojo-attach-point="configNodeText">C</span></span>
+		<span data-dojo-attach-point="closeNode" data-dojo-attach-event="onclick: close" class="dojoxFloatingCloseIcon"><span data-dojo-attach-point="closeNodeText">x</span></span>
+   </div>
+    <div class="widgetTitlePaneContentOuter" data-dojo-attach-point="hideNode">
+        <div class="dijitReset" data-dojo-attach-point="wipeNode">
             <div class="WidgetPaneContentInner">
-            
-            <div dojoAttachPoint="containerNode" waiRole="region" tabindex="-1">
+           	    <div data-dojo-attach-point="containerNode" waiRole="region" tabindex="-1">
                 <!-- nested divs because wipeIn()/wipeOut() doesn't work right on node w/padding etc.  Put padding on inner div. -->
-            </div>
-            <div class="widgetPaneFooter" dojoAttachPoint="footerNode">
-                <img dojoAttachPoint="previous" src="${_blankGif}" alt="" dojoAttachEvent="onclick: previousPane" class="previousIcon" /><span dojoAttachPoint="previousNodeInner" dojoAttachEvent="onclick:previousPane"></span>
-                <img dojoAttachPoint="next" src="${_blankGif}" alt="" dojoAttachEvent="onclick: nextPane" class="nextIcon" /><span dojoAttachPoint="nextNodeInner" dojoAttachEvent="onclick:nextPane"></span>
-            </div>
+                </div>
+                <div class="widgetPaneFooter" data-dojo-attach-point="footerNode">
+                    <span data-dojo-attach-point="previous" data-dojo-attach-event="onclick: previousPane" class="previousIcon" /><span data-dojo-attach-point="previousNodeInner"></span></span>
+                     <span data-dojo-attach-point="next" data-dojo-attach-event="onclick: nextPane" class="nextIcon" /><span data-dojo-attach-point="nextNodeInner"></span></span>
+                </div>
             </div>
         </div>
     </div>
